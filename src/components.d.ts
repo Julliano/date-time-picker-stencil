@@ -10,7 +10,9 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface AppHome {
+  interface AppHome {}
+  interface AppRoot {}
+  interface StTimepicker {
     'class': string;
     'clock24': boolean;
     'label': string;
@@ -18,7 +20,6 @@ export namespace Components {
     'selected': string;
     'step': number;
   }
-  interface AppRoot {}
 }
 
 declare global {
@@ -35,14 +36,23 @@ declare global {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
   };
+
+  interface HTMLStTimepickerElement extends Components.StTimepicker, HTMLStencilElement {}
+  var HTMLStTimepickerElement: {
+    prototype: HTMLStTimepickerElement;
+    new (): HTMLStTimepickerElement;
+  };
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement;
     'app-root': HTMLAppRootElement;
+    'st-timepicker': HTMLStTimepickerElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface AppHome {
+  interface AppHome {}
+  interface AppRoot {}
+  interface StTimepicker {
     'class'?: string;
     'clock24'?: boolean;
     'label'?: string;
@@ -50,11 +60,11 @@ declare namespace LocalJSX {
     'selected'?: string;
     'step'?: number;
   }
-  interface AppRoot {}
 
   interface IntrinsicElements {
     'app-home': AppHome;
     'app-root': AppRoot;
+    'st-timepicker': StTimepicker;
   }
 }
 
@@ -66,6 +76,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'app-home': LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+      'st-timepicker': LocalJSX.StTimepicker & JSXBase.HTMLAttributes<HTMLStTimepickerElement>;
     }
   }
 }
