@@ -1,0 +1,52 @@
+.date-picker {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.weekday-container {
+    display: flex;
+}
+
+.weekday {
+    flex: 1 0 0%;
+    display: block;
+    padding: 0.8rem;
+    color: #637381;
+    font-size: 1.2rem;
+    text-align: center;
+    background: transparent;
+}
+
+.week {
+    display: flex;
+}
+
+.day {
+    display: block;
+    flex: 1 0 0%;
+    width: 14.28571%;
+    margin: 0;
+    padding: 0.8rem;
+    background: transparent;
+    border: 1px solid #dfe3e8;
+    border-radius: 0;
+    outline: none;
+    font-size: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.empty-day {
+    display: block;
+    flex: 1 0 0%;
+    width: calc(100% / 7);
+    margin: 0;
+    padding: 0.8rem;
+    border: 1px solid #dfe3e8;
+}
+
+.empty-day + .empty-day,
+.empty-day + .day {
+    margin-left: -1px;
+}

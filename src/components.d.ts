@@ -11,15 +11,8 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface AppHome {}
-  interface AppRoot {}
-  interface StTimepicker {
-    'class': string;
-    'clock24': boolean;
-    'label': string;
-    'name': string;
-    'selected': string;
-    'step': number;
-  }
+  interface DayPicker {}
+  interface MonthPicker {}
 }
 
 declare global {
@@ -31,40 +24,33 @@ declare global {
     new (): HTMLAppHomeElement;
   };
 
-  interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
-  var HTMLAppRootElement: {
-    prototype: HTMLAppRootElement;
-    new (): HTMLAppRootElement;
+  interface HTMLDayPickerElement extends Components.DayPicker, HTMLStencilElement {}
+  var HTMLDayPickerElement: {
+    prototype: HTMLDayPickerElement;
+    new (): HTMLDayPickerElement;
   };
 
-  interface HTMLStTimepickerElement extends Components.StTimepicker, HTMLStencilElement {}
-  var HTMLStTimepickerElement: {
-    prototype: HTMLStTimepickerElement;
-    new (): HTMLStTimepickerElement;
+  interface HTMLMonthPickerElement extends Components.MonthPicker, HTMLStencilElement {}
+  var HTMLMonthPickerElement: {
+    prototype: HTMLMonthPickerElement;
+    new (): HTMLMonthPickerElement;
   };
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement;
-    'app-root': HTMLAppRootElement;
-    'st-timepicker': HTMLStTimepickerElement;
+    'day-picker': HTMLDayPickerElement;
+    'month-picker': HTMLMonthPickerElement;
   }
 }
 
 declare namespace LocalJSX {
   interface AppHome {}
-  interface AppRoot {}
-  interface StTimepicker {
-    'class'?: string;
-    'clock24'?: boolean;
-    'label'?: string;
-    'name'?: string;
-    'selected'?: string;
-    'step'?: number;
-  }
+  interface DayPicker {}
+  interface MonthPicker {}
 
   interface IntrinsicElements {
     'app-home': AppHome;
-    'app-root': AppRoot;
-    'st-timepicker': StTimepicker;
+    'day-picker': DayPicker;
+    'month-picker': MonthPicker;
   }
 }
 
@@ -75,8 +61,8 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'app-home': LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-      'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
-      'st-timepicker': LocalJSX.StTimepicker & JSXBase.HTMLAttributes<HTMLStTimepickerElement>;
+      'day-picker': LocalJSX.DayPicker & JSXBase.HTMLAttributes<HTMLDayPickerElement>;
+      'month-picker': LocalJSX.MonthPicker & JSXBase.HTMLAttributes<HTMLMonthPickerElement>;
     }
   }
 }
