@@ -37,6 +37,11 @@
     cursor: pointer;
 }
 
+.day + .day,
+.day + .empty-day {
+    margin-left: -1px;
+}
+
 .empty-day {
     display: block;
     flex: 1 0 0%;

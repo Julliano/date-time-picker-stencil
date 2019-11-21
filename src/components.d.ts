@@ -11,8 +11,15 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface AppHome {}
-  interface DayPicker {}
-  interface MonthPicker {}
+  interface CalendarBundle {}
+  interface DayPicker {
+    'date': number;
+    'month': number;
+  }
+  interface MonthPicker {
+    'fullDate': Date;
+    'onDayCLick': Object;
+  }
 }
 
 declare global {
@@ -22,6 +29,12 @@ declare global {
   var HTMLAppHomeElement: {
     prototype: HTMLAppHomeElement;
     new (): HTMLAppHomeElement;
+  };
+
+  interface HTMLCalendarBundleElement extends Components.CalendarBundle, HTMLStencilElement {}
+  var HTMLCalendarBundleElement: {
+    prototype: HTMLCalendarBundleElement;
+    new (): HTMLCalendarBundleElement;
   };
 
   interface HTMLDayPickerElement extends Components.DayPicker, HTMLStencilElement {}
@@ -37,6 +50,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement;
+    'calendar-bundle': HTMLCalendarBundleElement;
     'day-picker': HTMLDayPickerElement;
     'month-picker': HTMLMonthPickerElement;
   }
@@ -44,11 +58,19 @@ declare global {
 
 declare namespace LocalJSX {
   interface AppHome {}
-  interface DayPicker {}
-  interface MonthPicker {}
+  interface CalendarBundle {}
+  interface DayPicker {
+    'date'?: number;
+    'month'?: number;
+  }
+  interface MonthPicker {
+    'fullDate'?: Date;
+    'onDayCLick'?: Object;
+  }
 
   interface IntrinsicElements {
     'app-home': AppHome;
+    'calendar-bundle': CalendarBundle;
     'day-picker': DayPicker;
     'month-picker': MonthPicker;
   }
@@ -61,6 +83,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'app-home': LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+      'calendar-bundle': LocalJSX.CalendarBundle & JSXBase.HTMLAttributes<HTMLCalendarBundleElement>;
       'day-picker': LocalJSX.DayPicker & JSXBase.HTMLAttributes<HTMLDayPickerElement>;
       'month-picker': LocalJSX.MonthPicker & JSXBase.HTMLAttributes<HTMLMonthPickerElement>;
     }
