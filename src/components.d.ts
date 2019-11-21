@@ -15,10 +15,12 @@ export namespace Components {
   interface DayPicker {
     'date': number;
     'month': number;
+    'onDayCLick': Function;
+    'year': number;
   }
   interface MonthPicker {
     'fullDate': Date;
-    'onDayCLick': Object;
+    'onDayCLick': Function;
   }
 }
 
@@ -62,10 +64,13 @@ declare namespace LocalJSX {
   interface DayPicker {
     'date'?: number;
     'month'?: number;
+    'onDayCLick'?: Function;
+    'onDayChange'?: (event: CustomEvent<any>) => void;
+    'year'?: number;
   }
   interface MonthPicker {
     'fullDate'?: Date;
-    'onDayCLick'?: Object;
+    'onDayCLick'?: Function;
   }
 
   interface IntrinsicElements {

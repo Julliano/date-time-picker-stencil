@@ -1,4 +1,4 @@
-import { Component, h, Prop} from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, State} from '@stencil/core';
 
 const weekdays = [
   'Sunday',
@@ -8,7 +8,7 @@ const weekdays = [
   'Thursday',
   'Friday',
   'Saturday'
-]
+];
 
 @Component({
   tag: 'day-picker',
@@ -22,12 +22,15 @@ export class DayPicker {
 
     @Prop() date: number;
     @Prop() month: number;
+    @Prop() year: number;
+    @Prop() onDayCLick: Function;
 
-    // @Event() monthChange: EventEmitter;
+    @State() hoveredDate: null;
 
-    // changeDay() {
-    //   this.monthChange.emit('April');
-    // }
+    @Event() dayChange: EventEmitter;
+    changeDay(date) {
+        this.dayChange.emit(date);
+    }
 
     render() {
         const weekDaysMarkup = weekdays.map(weekday => {
@@ -38,7 +41,7 @@ export class DayPicker {
             )
         })
 
-        const weeks = getWeeksForMonth(10, 2019);
+        const weeks = getWeeksForMonth(this.month, this.year);
 
         const weeksMarkup = weeks.map((week, index) => {
         return (
@@ -62,8 +65,16 @@ export class DayPicker {
         }
 
         const date = fullDate.getDate();
-        return <button class="day" key={dayIndex}>{date}</button>
-        // return <button class="day" key={dayIndex} onClick={this.changeDay.bind(this)}>{date}</button>
+        let className = 'day';
+        if (date === this.date) {
+            className = 'day day--selected'
+        }
+        // return <button class="day" key={dayIndex}>{date}</button>
+        return <button class={className}
+                key={dayIndex}
+                onClick={this.changeDay.bind(this, date)}>
+                    {date}
+                </button>
     }
 }
 

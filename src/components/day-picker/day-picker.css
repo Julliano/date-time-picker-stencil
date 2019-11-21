@@ -42,6 +42,17 @@
     margin-left: -1px;
 }
 
+.day--selected {
+    color: #fff;
+    background: #5c6ac4;
+    border: 1px solid #5c6ac4;
+}
+
+.day:hover:not(.day--selected) {
+    background: #f2f2f2;
+    border: 1px solid #f2f2f2;
+}
+
 .empty-day {
     display: block;
     flex: 1 0 0%;

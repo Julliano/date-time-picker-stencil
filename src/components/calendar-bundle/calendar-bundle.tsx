@@ -8,25 +8,19 @@ export class CalendarBundle {
     @State() selectedDate: Date = new Date();
     @State() newDay: null;
 
-    @Listen('onDayClick', { capture: true })
-    changeMonth(data) {
-        this.newDay = data.detail;
-    }
-    
+    @Listen('dayChange', { capture: true })
     handleDayClick(newDay) {
         this.selectedDate = new Date(
             this.selectedDate.getFullYear(),
             this.selectedDate.getMonth(),
-            newDay
+            newDay.detail
         )
     }
 
     render() {
         return [
             <app-home>
-                <month-picker fullDate={this.selectedDate}>
-                    
-                </month-picker>
+                <month-picker fullDate={this.selectedDate} />
             </app-home>
         ];
     }
