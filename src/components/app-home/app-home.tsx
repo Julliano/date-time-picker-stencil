@@ -1,4 +1,3 @@
-// import { Component, h } from '@stencil/core';
 import { Component, h} from '@stencil/core';
 
 @Component({
@@ -8,7 +7,6 @@ import { Component, h} from '@stencil/core';
 export class AppHome {
 
   render() {
-    // const {selectedDate} = this.state;
     return [
       <ion-header>
         <ion-toolbar color="primary">

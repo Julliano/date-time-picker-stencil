@@ -1,14 +1,12 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'month-picker'
 })
 
 export class Monthpicker {
-    @Element() monthEl: HTMLElement;
-
+    
     @Prop() fullDate: Date;
-    @Prop() onDayCLick: Function;
 
     render() {
         const dateNumber = this.fullDate.getDate();
@@ -28,7 +26,6 @@ export class Monthpicker {
                                 date={dateNumber} 
                                 month={monthNumber}
                                 year={yearNumber}
-                                onDayCLick={this.onDayCLick}
                             />
                         </div>
                     </div>

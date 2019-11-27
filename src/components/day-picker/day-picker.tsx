@@ -23,7 +23,6 @@ export class DayPicker {
     @Prop() date: number;
     @Prop() month: number;
     @Prop() year: number;
-    @Prop() onDayCLick: Function;
 
     @State() hoveredDate: null;
 
@@ -34,7 +33,7 @@ export class DayPicker {
 
     render() {
         const weekDaysMarkup = weekdays.map(weekday => {
-        return (
+            return (
                 <div aria-label={weekday} class="weekday">
                     {abbrevationFromWeekday(weekday)}
                 </div>
@@ -44,7 +43,7 @@ export class DayPicker {
         const weeks = getWeeksForMonth(this.month, this.year);
 
         const weeksMarkup = weeks.map((week, index) => {
-        return (
+            return (
                 <div role="row" class="week" key={index}>
                     {week.map(this.renderWeek)}
                 </div>
@@ -69,7 +68,6 @@ export class DayPicker {
         if (date === this.date) {
             className = 'day day--selected'
         }
-        // return <button class="day" key={dayIndex}>{date}</button>
         return <button class={className}
                 key={dayIndex}
                 onClick={this.changeDay.bind(this, date)}>
@@ -98,8 +96,8 @@ function getWeeksForMonth(month, year) {
 
     while (currentDate.getMonth() === month) {
         if (currentWeek.length === WEEK_LENGTH) {
-        currentWeek = [];
-        weeks.push(currentWeek);
+            currentWeek = [];
+            weeks.push(currentWeek);
         }
 
         currentWeek.push(currentDate);
